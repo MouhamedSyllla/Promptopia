@@ -1,6 +1,7 @@
 'use client';
 import {useState, useEffect} from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { Suspense } from 'react';
 import Form from '@components/Form';
 
 const EditPrompt = () => {
@@ -53,13 +54,16 @@ const updatePrompt = async (e) => {
 }
 
   return (
-    <Form 
-      type="Modifer"
-      post={post}
-      setPost={setPost}
-      submitting={submitting}
-      handleSubmit={updatePrompt}
-    />
+    <Suspense fallback={<div>Loading...</div>}>
+      <Form 
+        type="Modifer"
+        post={post}
+        setPost={setPost}
+        submitting={submitting}
+        handleSubmit={updatePrompt}
+      />
+    </Suspense>
+    
   )
 }
 
