@@ -51,7 +51,6 @@ const EditPrompt = () => {
   };
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
       <Form
         type="Modifier"
         post={post}
@@ -59,8 +58,17 @@ const EditPrompt = () => {
         submitting={submitting}
         handleSubmit={updatePrompt}
       />
-    </Suspense>
   );
 };
 
-export default EditPrompt;
+
+const Page = () => {
+  return (
+    <Suspense>
+      <EditPrompt />
+    </Suspense>
+  )
+}
+
+export default Page;
+
